@@ -1,6 +1,7 @@
 package com.test.demoribbon;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,12 @@ public class Ribbon_Client {
 
     @GetMapping(path="/hello")
     @ResponseBody
-    @HystrixCommand(fallbackMethod = "hiError")
+    @HystrixCommand(fallbackMethod = "hiError",threadPoolProperties =
+            {@HystrixProperty(name="coreSize",value="30"),
+            @HystrixProperty(name="maxQueueSize",value="-1")})
     public String testDefaultRibbon() {
         String forObject = restTemplate.getForObject("http://HELLO/hello", String.class);
 
-        System.out.println("**********************");
-        System.out.println(forObject);
         return forObject;
     }
 

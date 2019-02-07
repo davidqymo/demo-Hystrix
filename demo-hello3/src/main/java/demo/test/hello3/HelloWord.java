@@ -1,4 +1,4 @@
-package com.test.demo.demohello2;
+package demo.test.hello3;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ public class HelloWord {
     @ResponseBody
     public String sayHi()
     {
-        return "Hello2 World!!";
+        return "Hellow World!! from service 3";
     }
 
 }
