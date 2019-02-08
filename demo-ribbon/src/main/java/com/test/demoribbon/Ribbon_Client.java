@@ -24,7 +24,7 @@ public class Ribbon_Client {
             {@HystrixProperty(name="coreSize",value="30"),
             @HystrixProperty(name="maxQueueSize",value="-1")})
     public String testDefaultRibbon() {
-        String forObject = restTemplate.getForObject("http://HELLO/hello", String.class);
+        String forObject = restTemplate.getForObject("http://helloservice/hello", String.class);
 
         return forObject;
     }
